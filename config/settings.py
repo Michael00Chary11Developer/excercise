@@ -134,8 +134,24 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(seconds=20),
     'REFRESH_TOKEN_LIFETIME': timedelta(minutes=30),
 }
-
+from rest_framework.pagination import LimitOffsetPagination
 # globall basic_authentication
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 2,
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
 
 
 # globall basic_authentication
